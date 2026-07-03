@@ -177,8 +177,21 @@ def load_custom_css():
             text-align: center;
             color: #64ffda;
             font-size: 3em;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+        }
+
+        /* Subtitle styling */
+        .main-subtitle {
+            text-align: center;
+            color: #ffffff;
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            opacity: 0.85;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
         }
 
         /* Feature title styling */
@@ -327,6 +340,9 @@ def main():
         st.markdown("""
             <div class='main-title'>
                 <h1>Planetary Analysis Dashboard</h1>
+            </div>
+            <div class='main-subtitle'>
+                An intelligent classification system powered by an XGBoost model. Adjust the planetary parameters on the left to determine the classification and habitability level of the target world in real-time.
             </div>
         """, unsafe_allow_html=True)
 
