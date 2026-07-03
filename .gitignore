@@ -1,0 +1,41 @@
+# Virtual environment
+.venv/
+venv/
+env/
+ENV/
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# OS files
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/
+
+# Generated / assistant artifacts
+project_report.docx
+generate_report.py
+images/architecture_diagram.png
+images/*.png
+
+# Model artifacts
+*.pkl
+
+# Data files
+x.xlsx
+y.xlsx
+*.xlsx
+*.csv
