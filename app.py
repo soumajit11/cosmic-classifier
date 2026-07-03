@@ -434,6 +434,48 @@ def main():
             href = f'<a href="data:file/csv;base64,{b64}" download="planetary_analysis.csv" style="text-decoration:none;"><button style="width:100%; padding:12px; border-radius:25px; background:linear-gradient(45deg, #64ffda, #00b4d8); border:none; color:white; font-weight:bold; font-size:1em; cursor:pointer; box-shadow:0 0 15px rgba(100, 255, 218, 0.3); transition:all 0.3s ease;">Export Analysis Results</button></a>'
             st.markdown(href, unsafe_allow_html=True)
 
+        # Divider line
+        st.markdown("<hr style='border: 1px solid rgba(100, 255, 218, 0.18); margin: 40px 0;'>", unsafe_allow_html=True)
+
+        # System Overview and Classification Guide (Symmetrical Layout)
+        st.subheader("System Overview & Classification Guide")
+        
+        info_col1, info_col2 = st.columns(2)
+        with info_col1:
+            st.markdown("""
+                <div class="slider-container" style="height: 100%; min-height: 380px;">
+                    <h3 style="color: #64ffda; margin-top: 0; margin-bottom: 15px;">What This System Does</h3>
+                    <p style="font-size: 0.95em; line-height: 1.6; opacity: 0.9;">
+                        This dashboard utilizes an XGBoost machine learning model to classify planetary environments based on their physical and atmospheric characteristics. By adjusting the astronomical parameters on the left, the system computes real-time predictions to determine the suitability of the celestial body for human exploration, scientific research, or resource extraction.
+                    </p>
+                    <p style="font-size: 0.95em; line-height: 1.6; opacity: 0.9;">
+                        The model evaluates 10 key features, including gravity, temperature, atmospheric composition, and star proximity, to match the input profile against known planetary templates.
+                    </p>
+                </div>
+            """, unsafe_allow_html=True)
+            
+        with info_col2:
+            st.markdown("""
+                <div class="slider-container" style="height: 100%; min-height: 380px;">
+                    <h3 style="color: #64ffda; margin-top: 0; margin-bottom: 15px;">Understanding the Results</h3>
+                    <p style="font-size: 0.95em; line-height: 1.6; opacity: 0.9; margin-bottom: 10px;">
+                        The classification model outputs a numeric value from 0 to 9, mapping to the following definitions:
+                    </p>
+                    <ul style="font-size: 0.9em; line-height: 1.5; opacity: 0.9; padding-left: 20px; margin: 0;">
+                        <li><strong>0: Bewohnbar (Habitable)</strong> - Earth-like conditions, fully habitable environment.</li>
+                        <li><strong>1: Terraformierbar (Terraformable)</strong> - Can be modified to sustain human life.</li>
+                        <li><strong>2: Rohstoffreich (Resource-Rich)</strong> - Abundant materials, potentially harvestable.</li>
+                        <li><strong>3: Wissenschaftlich (Scientific Interest)</strong> - High value for astronomical research.</li>
+                        <li><strong>4: Gasriese (Gas Giant)</strong> - Gaseous planet with no solid surface.</li>
+                        <li><strong>5: Wüstenplanet (Desert World)</strong> - Extremely dry, arid, and water-scarce.</li>
+                        <li><strong>6: Eiswelt (Ice World)</strong> - Glacial environment with freezing temperatures.</li>
+                        <li><strong>7: Toxischetmosäre (Toxic Atmosphere)</strong> - Corrosive or deadly gas composition.</li>
+                        <li><strong>8: Hohestrahlung (High Radiation)</strong> - Extreme stellar or planetary radiation.</li>
+                        <li><strong>9: Toterahswelt (Dead World)</strong> - Bare, lifeless rock with zero habitability.</li>
+                    </ul>
+                </div>
+            """, unsafe_allow_html=True)
+
     except Exception as e:
         st.error(f"An error occurred: {str(e)}")
 
