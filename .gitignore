@@ -33,6 +33,7 @@ images/*.png
 
 # Model artifacts
 *.pkl
+!decision_tree_model.pkl
 
 # Data files
 x.xlsx
