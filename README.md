@@ -106,8 +106,6 @@ cosmic-classifier/
 ├── x.xlsx                  # Inputs dataset containing planetary characteristics
 ├── y.xlsx                  # Outputs dataset containing target planet classes (0-9)
 ├── requirements.txt        # Configured dependencies list (for pip install)
-├── images/
-│   └── space_background.jpg # Asset background image for the Streamlit dashboard
 └── README.md               # Detailed project documentation (this file)
 ```
 
