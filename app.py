@@ -295,7 +295,7 @@ def display_prediction_card(prediction, probability=None):
         8: "Hohestrahlung (High Radiation)",
         9: "Toterahswelt (Dead World)"
     }
-    class_name = class_mapping.get(prediction, f"Unknown ({prediction})")
+    class_name = f"{prediction}: {class_mapping.get(prediction, f'Unknown ({prediction})')}"
     
     st.markdown(f"""
         <div class="prediction-card">
