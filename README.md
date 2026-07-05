@@ -1,24 +1,24 @@
-# 🌌 Cosmic Classifier: Planetary Habitability Explorer 🚀
+# Cosmic Classifier: Planetary Habitability Explorer
 
-A personal machine learning project designed to preprocess planetary attributes and classify planets into habitability categories. This repository contains the complete model exploration pipeline and an interactive, space-themed **Streamlit** dashboard for real-time inference.
+A personal machine learning project designed to preprocess planetary attributes and classify planets into habitability categories. This repository contains the complete model exploration pipeline and an interactive, space-themed Streamlit dashboard for real-time inference.
 
 ---
 
-## 🛠️ Technology Stack & Libraries Used
+## Technology Stack and Libraries Used
 
 This project utilizes a modern Python-based data science and frontend stack:
 
 * **Frontend & Dashboard:** `streamlit` (utilizes HTML injections and Custom CSS for styling)
-* **Interactive Visualization:** `plotly` (used to generate dynamic feature distribution bar charts)
+* **Interactive Visualization:** `plotly` (used to generate dynamic feature distribution radar and bar charts)
 * **Model Algorithms & Frameworks:** `xgboost` (final gradient boosted model), `scikit-learn` (for data splitting, baseline model comparison, and metric evaluations)
 * **Core Data Handling:** `pandas` (loading/processing Excel files), `openpyxl` (pandas engine for Excel reading), `numpy` (numeric computation)
 * **Model Serialization:** `pickle` (for saving and loading the trained classifier)
 
 ---
 
-## 🔄 Pipeline & Working Workflow
+## Pipeline and Working Workflow
 
-Below is the step-by-step breakdown of how the data flows from raw files to live predictions, specifying **what tools were used** and **where they are implemented**:
+Below is the step-by-step breakdown of how the data flows from raw files to live predictions, specifying what tools were used and where they are implemented:
 
 ```mermaid
 graph TD
@@ -81,26 +81,33 @@ graph TD
     ```
 
 ### 6. Dashboard Deployment & Live Inference
-* **Where:** `app.py` (Main file)
-* **What & How:**
-  * **Model Loading:** The Streamlit dashboard loads the pickle file on launch (Lines 268-273).
-  * **User Interface:** Collects real-time input parameters via 10 custom CSS-styled sliders (Lines 282-367).
-  * **Interactive Graphs:** Utilizes `plotly.express` to render a dark-themed horizontal bar chart showing the distribution of the entered feature parameters (Lines 185-198).
+* **Where:** [app.py](file:///e:/Projects/cosmic_classifier/app.py) and the `src/` modules
+* **What & How:** 
+  * **Model Loading:** The Streamlit dashboard loads the pickle file using cached decorators in [model_utils.py](file:///e:/Projects/cosmic_classifier/src/model_utils.py).
+  * **User Interface:** Collects real-time input parameters via 10 custom-styled sliders inside categorized tabs in [views.py](file:///e:/Projects/cosmic_classifier/src/views.py).
+  * **Interactive Graphs:** Utilizes `plotly` to render a normalized signature radar chart and a horizontal bar chart of the parameter metrics in [charts.py](file:///e:/Projects/cosmic_classifier/src/charts.py).
   * **Real-time Prediction:** Feeds the slider values into a pandas DataFrame and executes predictions on the fly:
     ```python
     prediction = model.predict(input_df)
     ```
-    Renders results inside a glassmorphic dashboard card.
-  * **Export Capabilities:** Enables downloading inputs as a CSV file using base64 download href tags (Lines 398-403).
+    Renders results inside custom prediction cards styled with glowing status boundaries.
+  * **Export Capabilities:** Enables exporting parameter telemetry data as a CSV download link in [views.py](file:///e:/Projects/cosmic_classifier/src/views.py).
 
 ---
 
-## 📂 Project Directory Structure
+## Project Directory Structure
 
 ```text
 cosmic-classifier/
 │
-├── app.py                  # Streamlit Dashboard (Frontend logic, layout, CSS and inputs)
+├── src/                    # Modular source code package
+│   ├── __init__.py         # Package initialization
+│   ├── styles.py           # CSS themes and JavaScript injections
+│   ├── charts.py           # Plotly graph definitions (radar & bar charts)
+│   ├── model_utils.py      # Cached model loader and prediction formatting
+│   └── views.py            # Page rendering views (Welcome, Inputs, Report)
+│
+├── app.py                  # Streamlit entry point and navigation coordinator
 ├── model.ipynb             # Jupyter Notebook containing the full training pipeline
 ├── decision_tree_model.pkl # Trained and exported XGBoost classifier model binary
 ├── x.xlsx                  # Inputs dataset containing planetary characteristics
@@ -111,7 +118,7 @@ cosmic-classifier/
 
 ---
 
-## 💻 Running the Project Locally
+## Running the Project Locally
 
 ### Step 1: Install Dependencies
 Install all package requirements listed in [requirements.txt](file:///e:/Projects/cosmic_classifier/requirements.txt):
